@@ -37,6 +37,9 @@
 		//and create observable options properties.
 		for (var name in props) {
 			if (props[name].defaultValue.constructor !== props[name].type)
+				throw new Error("Property " + name + ".defaultValue was not specified");
+
+			if (props[name].defaultValue.constructor !== props[name].type)
 				throw new Error("Property " + name + ".defaultValue (" + props[name].defaultValue + ") must be of type " + props[name].type.name);
 
 			this[name] = ko.observable(props[name].defaultValue);
